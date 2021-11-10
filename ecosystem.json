@@ -1,0 +1,23 @@
+{
+  "apps": [
+    {
+      "name":"todo-server",
+      "script": "dist/main.js"
+    }
+  ],
+  "deploy": {
+    "production": {
+      "user": "root",
+      "host": "139.199.155.222",
+      "ref": "origin/master",
+      "repo": "git@gitee.com:Authur/todo.git",
+      "path": "/home/todo-server",
+      "ssh_options": "StrictHostKeyChecking=no",
+      "post-deploy":
+        "git pull & npm install && npm run prestart && pm2 startOrRestart ecosystem.json --env production",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  }
+}
