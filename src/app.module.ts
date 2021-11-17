@@ -1,26 +1,20 @@
-import { TodoService } from './module/todo/todo.service';
-import { TodoController } from './module/todo/todo.controller';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Todo } from './module/todo/todo.entity';
+import { ConfigModule, ConfigService } from 'nestjs-config';
+import { TodoModule } from './module/todo/todo.module';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: '*******',
-      port: 3306,
-      username: '*****',
-      password: '*****',
-      database: '*****',
-      entities: [Todo],
-      synchronize: true,
+    ConfigModule.resolveRootPath(__dirname).load('config/!(*.d).{ts,js}'),
+    TypeOrmModule.forRootAsync({
+      useFactory: (config: ConfigService) => config.get('ormconfig'),
+      inject: [ConfigService],
     }),
-    TypeOrmModule.forFeature([Todo]),
+    TodoModule,
   ],
-  controllers: [AppController, TodoController],
-  providers: [AppService, TodoService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}

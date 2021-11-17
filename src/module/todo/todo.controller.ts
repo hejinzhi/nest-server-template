@@ -1,5 +1,5 @@
 import { TodoService } from './todo.service';
-import { Todo } from './todo.entity';
+import { TodoEntity } from '../../entity/todo.entity';
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { AppService } from '../../app.service';
 import { ApiQuery, ApiBody } from '@nestjs/swagger';
@@ -13,16 +13,16 @@ export class TodoController {
   constructor(private readonly todoService: TodoService) {}
 
   @Get()
-  async getAllTodo(): Promise<Todo[]> {
+  async getAllTodo(): Promise<TodoEntity[]> {
     return await this.todoService.findAll();
   }
 
   @ApiBody({
     required: true,
-    type: Todo,
+    type: TodoEntity,
   })
   @Post()
-  async addTask(@Body() body: Todo) {
+  async addTask(@Body() body: TodoEntity) {
     return await this.todoService.add(body);
   }
 
