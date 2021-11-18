@@ -1,14 +1,13 @@
-import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { ConnectionOptions } from 'typeorm';
 import { SnakeNamingStrategy } from './snake-naming.strategy';
 
 export default {
   type: 'mysql',
-  host: '*****',
+  host: '******',
 
-  username: '*****',
-  password: '*****',
-  database: '*****',
+  username: '******',
+  password: '******',
+  database: '******',
 
   port: 3306,
   synchronize: true,

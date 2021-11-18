@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from 'nestjs-config';
 import { TodoModule } from './module/todo/todo.module';
+import { PersonModule } from './module/person/person.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { TodoModule } from './module/todo/todo.module';
       inject: [ConfigService],
     }),
     TodoModule,
+    PersonModule
   ],
   controllers: [AppController],
   providers: [AppService],

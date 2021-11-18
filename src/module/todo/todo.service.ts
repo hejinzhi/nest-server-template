@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, UpdateResult } from 'typeorm';
 import { TodoEntity } from '../../entity/todo.entity';
 
 @Injectable()
@@ -14,7 +14,7 @@ export class TodoService {
     return this.todoRepository.find({ isActive: true });
   }
 
-  async remove(id: number) {
+  async remove(id: number): Promise<UpdateResult> {
     return await this.todoRepository.update(
       { id },
       {

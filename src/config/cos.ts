@@ -1,10 +1,10 @@
 export default {
-  secretId: '****',
-  secretKey: '****',
+  secretId: '******',
+  secretKey: '******',
   proxy: '',
   durationSeconds: 1800,
-  bucket: '***',
-  region: 'ap-guangzhou',
+  bucket: '******',
+  region: '******',
   allowPrefix: '*',
   // 简单上传和分片，需要以下的权限，其他权限列表请看 https://cloud.tencent.com/document/product/436/14048
   allowActions: [
