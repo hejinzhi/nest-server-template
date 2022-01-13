@@ -1,6 +1,6 @@
 {
   "name": "vue3-admin-server",
-  "version": "nest-server-template",
+  "version": "1.0.0",
   "private": true,
   "description": "vue3-admin-server",
   "license": "MIT",
